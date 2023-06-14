@@ -1,9 +1,7 @@
-import telegram
-import asyncio
 import currencyapicom
 import logging
 from telegram import Update
-from telegram.ext import filters, ApplicationBuilder, ContextTypes, CommandHandler, MessageHandler
+from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
