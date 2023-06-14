@@ -6,6 +6,6 @@ RUN pip install python-telegram-bot
 RUN pip install currencyapicom
 RUN pip install python-telegram-bot[job-queue]
 
-EXPOSE 443
+EXPOSE 80
 
 CMD ["python", "./main.py"]
