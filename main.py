@@ -79,7 +79,7 @@ async def unset(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 if __name__ == '__main__':
-    application = ApplicationBuilder().token('5326250099:AAEWi-VcjkA8F-bqp0yO_FA1mKqTOnquUXE').build()
+    application = ApplicationBuilder().token('869735841:AAFvY-ZLU8CxdSo9jtPDrwZqOk2hlYygsgg').build()
     client = currencyapicom.Client('tJl01wusNfgv3zqCGpGK8FlSiZtnlfRlt3pbLTaB')
 
     start_handler = CommandHandler(['start', 'help'], start)
