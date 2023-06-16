@@ -90,7 +90,7 @@ if __name__ == '__main__':
     application.add_handler(CommandHandler('set', set_timer))
     application.add_handler(CommandHandler('unset', unset))
 
-    application.run_polling(poll_interval=1)
+    application.run_polling(poll_interval=3600)
 
 # """
 # Simple Bot to send timed Telegram messages.
