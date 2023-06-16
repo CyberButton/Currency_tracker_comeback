@@ -11,21 +11,23 @@ logging.basicConfig(
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Use /set <value> <0/1> to set a threshold "
-                                                                          "value and more/less comparator, /unset to "
-                                                                          "remove")
+                                                                          "value and more/less comparator(0 - value "
+                                                                          "must be higher than target, 1 - value must "
+                                                                          "be lower than target), /unset to remove")
 
 
 async def currency(context: ContextTypes.DEFAULT_TYPE) -> None:
     data = client.latest(currencies=['KZT'])
     value = float(data['data']['KZT']['value'])
-    if context.job.data[1]:
+
+    if int(context.job.data[1]) == 1:
         if context.job.data[0] >= value:
-            text = "target value reached, current value is equal to " + str(value)
+            text = "TARGET VALUE REACHED, current value is equal to " + str(value)
         else:
             text = "target value haven't been reached, current value is equal to " + str(value)
     else:
         if context.job.data[0] <= value:
-            text = "target value reached, current value is equal to " + str(value)
+            text = "TARGET VALUE REACHED, current value is equal to " + str(value)
         else:
             text = "target value haven't been reached, current value is equal to " + str(value)
 
@@ -52,7 +54,7 @@ async def set_timer(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
             await update.effective_message.reply_text("Target value cant be negative!")
             return
 
-        more_less = bool(context.args[1])
+        more_less = (context.args[1])
         if threshold < 0:
             await update.effective_message.reply_text("Target value2 cant be negative!")
             return
@@ -88,7 +90,7 @@ if __name__ == '__main__':
     application.add_handler(CommandHandler('set', set_timer))
     application.add_handler(CommandHandler('unset', unset))
 
-    application.run_polling(poll_interval=300)
+    application.run_polling(poll_interval=1)
 
 # """
 # Simple Bot to send timed Telegram messages.
